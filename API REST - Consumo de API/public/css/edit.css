@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Source+Serif+4:ital,wght@1,200&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-size: 100%;
+    background: linear-gradient(68.15deg, #291c1e 16.62%, #8b3f3f 85.61%);
+
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;   
+}
+.navbar{
+    display: flex;
+    gap: 32px;
+}
+.headeritem{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 16px;
+}
+.logoutbutton{
+    background-color: rgba(0, 0, 0, 0);
+    color:rgb(226, 224, 224);
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    border:none;
+}
+.mainpage{
+    border-top: 0.4px solid rgb(226, 224, 224);
+    margin-bottom: 48px;
+}
+.sectiontitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.content-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+.content-title-main{
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 60px;
+    color:rgb(226, 224, 224);
+}
+.content-body-main{
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 32px;
+    color:rgb(226, 224, 224);
+}
+.sectioncontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:22px;
+    margin-top: 48px;
+}
+.content-title{
+    border-top:0.4px solid rgb(226, 224, 224);
+    padding-top: 48px;
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    color:rgb(226, 224, 224);
+    margin-bottom: 15px;
+}
+.content-body{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 20px;
+}
+.delbtn{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 16px;
+    background: #d4000085 ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border:none;
+    padding: 0.2em 0.6em;
+    margin-left: 1em;
+
+}
+.delbtn:houver{
+    background: #000000;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2); ;
+    text-shadow: none;
+}
+.edtbtn{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 16px;
+    background: #1500d488 ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border:none;
+    padding: 0.2em 0.6em;
+    margin-left: 1em;
+}
+.edtbtn:houver{
+    background: #000000;
+    text-shadow: none;
+}
+.footer{
+    padding: 30px;
+    border-top: 0.4px solid rgb(226, 224, 224);
+}
+
+input,select,textarea, button{
+    border-radius: 5px;
+
+}
+.buttonsubmit{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 16px;
+    background: #3a3a3a ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border:0;
+    padding: 0.2em 0.6em;
+
+
+}
+.buttonsubmit:houver{
+    background: #000000;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2); ;
+    text-shadow: none;
+}
+.field input[type="text"], .field input[type="email"], .field input[type="password"],.field input[type="number"], .field select, .field textarea{
+    padding: 0.2em;
+    border: 1px solid rgb(226, 224, 224);;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    display: block;
+
+}

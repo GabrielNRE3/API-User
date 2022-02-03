@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API TEST</title>
+
+<link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+<header class="header">
+    <nav class="navbar">
+        <a class="headeritem"href="/home">Home</a>
+        <a class="headeritem"href="/edit">Edit Users</a>
+        <button class = "logoutbutton"type="button" onclick="logout()">Logout</button>
+    </nav>
+</header>
+<main class="mainpage">
+<section class="sectiontitle">
+    <div class="content-desc">
+        <h1 class="content-title-main">API Showcase - All Users</h1>
+        <h2 class="content-body-main">If logged on an admin account click on "Edit Users" for more options</h2>
+    </div>
+</section>
+<section class="sectioncontent">
+    <h3 class="content-title">Users list:</h3>
+    <ul class="content-body" id="users"></ul>
+</section>
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var axiosconfig = {
+        headers: {
+            authorization: "Bearer " + localStorage.getItem("token")
+        }
+    }
+axios.get("http://localhost:3006/user",axiosconfig).then(response =>
+{
+    var users = response.data;
+    var list = document.getElementById("users");
+    users.forEach(user => 
+    {
+        var item = document.createElement("li");
+        item.innerHTML= user.name + " - " + user.email + " - Role: " +user.role;
+        list.appendChild(item);
+    });
+}).catch(err =>
+{
+    window.location.replace("/home");
+    console.log(err);
+})
+</script>
+</html>

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Source+Serif+4:ital,wght@1,200&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-size: 100%;
+    background: linear-gradient(68.15deg, #291c1e 16.62%, #8b3f3f 85.61%);
+
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;   
+}
+.navbar{
+    display: flex;
+    gap: 32px;
+}
+.headeritem{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 16px;
+}
+.logoutbutton{
+    background-color: rgba(0, 0, 0, 0);
+    color:rgb(226, 224, 224);
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    border:none;
+}
+.mainpage{
+    border-top: 0.4px solid rgb(226, 224, 224);
+    margin-bottom: 48px;
+}
+.sectiontitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.content-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+.content-title-main{
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 60px;
+    color:rgb(226, 224, 224);
+}
+.content-body-main{
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 32px;
+    color:rgb(226, 224, 224);
+}
+.sectioncontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:22px;
+    margin-top: 48px;
+}
+.content-title{
+    border-top:0.4px solid rgb(226, 224, 224);
+    padding-top: 48px;
+    font-family: 'Source Serif 4', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    color:rgb(226, 224, 224);
+    margin-bottom: 15px;
+}
+.content-body{
+    font-family: 'Nanum Gothic', sans-serif;
+    color:rgb(226, 224, 224);
+    font-weight: 200;
+    font-size: 20px;
+}

@@ -1,0 +1,54 @@
+<%- include ('partials/header.ejs') %>
+<link rel="stylesheet" href="/css/formCreate.css">
+</head>
+<body>
+
+    <form class="sectiontitle">
+                <div>
+                    <h1 id="title">Create Account</h1>
+                    <p id="subtitle">All fields required</p>
+                    <br>
+                    <div class="field">
+                        <label for="name"><strong>Name</strong></label>
+                        <input type="text" name="Name" id="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email"><strong>Email</strong></label>
+                        <input type="email" name="Email" id="email" required>
+                        <br>
+                        <label for="password"><strong>Password</strong></label>
+                        <input type="password" name="Password" id="password" required>
+                </div>
+            </div>          
+            <button class="button" type="button" onclick="register()">Submit</button> 
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    localStorage.setItem('token', '');
+
+    function register()
+    {
+        var nameinput = document.getElementById("name");
+        var emailinput = document.getElementById("email");
+        var passwordinput = document.getElementById("password");
+
+        var newuser = {
+            name: nameinput.value,
+            email: emailinput.value,
+            password: passwordinput.value 
+        }
+
+        axios.post("http://localhost:3006/user", newuser).then(response =>
+        {
+            if(response.status ==200)
+            {
+               window.location.replace("/");
+            }
+        }).catch(err =>
+        {
+            alert("Cannot register");
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API TEST</title>
+
+<link rel="stylesheet" href="/css/edit.css">
+</head>
+
+<body>
+<header class="header">
+    <nav class="navbar">
+        <a class="headeritem"href="/home">Home</a>
+        <a class="headeritem"href="/edit">Show Users</a>
+        <button class = "logoutbutton"type="button" onclick="logout()">Logout</button>
+    </nav>
+</header>
+<main class="mainpage">
+    <section class="sectiontitle">
+        <div class="content-desc">
+            <h1 class="content-title-main">API Showcase - Edit Users</h1>
+            <h2 class="content-body-main">Click on "delete" or "edit" to execute those actions</h2>
+        </div>
+    </section>
+    <section class="sectioncontent">
+        <h3 class="content-title">Users list:</h3>
+        <ul class="content-body" id="users"></ul>
+    </section>
+    <footer class="footer">
+    <h1 class="content-title-main">Edit Menu</h1>
+    <br>
+    <div class="field">
+    <label class="content-body">ID</label><br><input name="id" type="number" id="id" readonly><br>
+    <label class="content-body">Name</label><br><input name="name" type="text" id="name">
+    <button class = "buttonsubmit"type="button" onclick="updtname()">Submit</button><br>
+    <label class="content-body">Email</label><br><input name="email" type="email" id="email">
+    <button class = "buttonsubmit" type="button" onclick="updtemail()">Submit</button><br>
+    <label class="content-body">Role</label><br><input name="role" type="number" id="role">
+    <button class = "buttonsubmit" type="button" onclick="updtrole()">Submit</button><br>
+    </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var axiosconfig = {
+        headers: {
+            authorization: "Bearer " + localStorage.getItem("token")
+        }
+    }
+
+    function deleteuser(listItem)
+{
+    var id = listItem.getAttribute("data-id");
+    axios.delete("http://localhost:3006/user/"+id,axiosconfig).then(response =>
+    {
+        window.location.replace("/edit");
+    }).catch(err =>
+    {
+        alert("Only Admins can do this action");
+    })
+}
+
+    function prep(listItem)
+    {
+    var id = listItem.getAttribute("data-id");
+    var name= listItem.getAttribute("data-name");
+    var email= listItem.getAttribute("data-email");
+    var role= listItem.getAttribute("data-role");
+    document.getElementById("id").value = id;
+    document.getElementById("name").value = name;
+    document.getElementById("email").value = email;
+    document.getElementById("role").value = role;
+    }
+
+    function updtname(listItem)
+    {
+        var idinput = document.getElementById("id");
+        var nameinput = document.getElementById("name");
+
+        var newdata = {name: nameinput.value}
+        var id = idinput.value;
+
+        axios.put("http://localhost:3006/user/name/"+id, newdata,axiosconfig).then(response =>
+        {
+            if(response.status ==200)
+            {
+               window.location.replace("/edit");
+            }
+        }).catch(err =>
+        {
+            alert("Cannot edit");
+        })
+    }
+
+    function updtemail(listItem)
+    {
+        var idinput = document.getElementById("id");
+        var emailinput = document.getElementById("email");
+
+        var newdata = {email: emailinput.value}
+        var id = idinput.value;
+
+        axios.put("http://localhost:3006/user/email/"+id, newdata,axiosconfig).then(response =>
+        {
+            if(response.status ==200)
+            {
+               window.location.replace("/edit");
+            }
+        }).catch(err =>
+        {
+            alert("Cannot edit");
+        })
+    }
+
+    function updtrole(listItem)
+    {
+        var idinput = document.getElementById("id");
+        var roleinput = document.getElementById("role");
+
+        var newdata = {role: roleinput.value}
+        var id = idinput.value;
+
+        axios.put("http://localhost:3006/user/role/"+id, newdata,axiosconfig).then(response =>
+        {
+            if(response.status ==200)
+            {
+               window.location.replace("/edit");
+            }
+        }).catch(err =>
+        {
+            alert("Cannot edit");
+        })
+    }
+
+    axios.get("http://localhost:3006/user",axiosconfig).then(response =>
+{
+    var users = response.data;
+    var list = document.getElementById("users");
+    users.forEach(user => 
+    {
+        var item = document.createElement("li");
+        item.setAttribute("data-id",user.id);
+        item.setAttribute("data-name",user.name);
+        item.setAttribute("data-email",user.email);
+        item.setAttribute("data-role",user.role);
+        item.innerHTML= user.name + " - " + user.email + " - Role: " +user.role +"   ";
+        var delbtn = document.createElement("button");
+        delbtn.innerHTML = "Delete";
+        var edtbtn = document.createElement("button");
+        edtbtn.innerHTML = "Edit";
+        delbtn.addEventListener("click", function()
+        {
+            deleteuser(item);
+        })
+        edtbtn.addEventListener("click", function()
+        {
+            prep(item);
+        })
+        delbtn.className = "delbtn";
+        edtbtn.className = "edtbtn";
+        item.appendChild(edtbtn);
+        item.appendChild(delbtn);
+        list.appendChild(item);
+    });
+}).catch(err =>
+{
+    window.location.replace("/home");
+    console.log(err);
+})
+
+</script>
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API TEST</title>
+
+<link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+<header class="header">
+    <nav class="navbar">
+        <a class="headeritem"href="/home">Home</a>
+        <a class="headeritem"href="/showall">Show Users</a>
+        <a class="headeritem"href="/edit">Edit Users</a>
+        <button class = "logoutbutton"type="button" onclick="logout()">Logout</button>
+    </nav>
+</header>
+<main class="mainpage">
+        <section class="sectiontitle">
+            <div class="content-desc">
+                <h1 class="content-title-main">API Showcase - Home</h1>
+                <h2 class="content-body-main">Minimal interface just for tests</h2>
+            </div>
+        </section>
+        <section class="sectioncontent">
+            <h3 class="content-title">What this site does include:</h3>
+            <p class="content-body"> - <strong>Register</strong> users on API database</p>
+            <p class="content-body"> - Authenticate logins by searching on database and uses <strong>jwt for token generation</strong></p>
+            <p class="content-body"> - Multiple roles with different acess</p>
+            <p class="content-body"> - Power to <strong>edit</strong> some of users data based on authorization</p>
+            <br>
+            <h3 class="content-title"> - What this site doesn't include:</h3>
+            <p class="content-body"> - Users password changes (Lack of email adress config)</p>
+            <p class="content-body"> - Email authentication on register (Lack of email adress config</p>
+        </section>
+</main>
+</body>
+<script>
+    function logout()
+    {
+        localStorage.setItem('token', '');
+        window.location.replace("/");
+    }
+</script>
+</html>
